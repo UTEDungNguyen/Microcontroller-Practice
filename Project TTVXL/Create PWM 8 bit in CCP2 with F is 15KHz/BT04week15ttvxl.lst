@@ -1,0 +1,523 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Sun Dec 18 15:47:45 2022
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F887
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	text25,local,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,delta=2
+    10                           	psect	text26,local,class=CODE,delta=2
+    11                           	psect	intentry,global,class=CODE,delta=2
+    12                           	psect	text27,local,class=CODE,delta=2
+    13                           	psect	pa_nodes,global,class=CODE,delta=2
+    14                           	dabs	1,0x7E,2
+    15  000A                     	;#
+    16                           
+    17                           	psect	config
+    18  2007  E3C2               	dw	58306	;#
+    19                           
+    20                           	psect	text25
+    21  0000                     __ptext25:	
+    22  001D                     _CCP2CON	set	29
+    23  001B                     _CCPR2L	set	27
+    24  0011                     _TMR2	set	17
+    25  005F                     _GIE	set	95
+    26  005C                     _INTE	set	92
+    27  0059                     _INTF	set	89
+    28  0090                     _T2CKPS0	set	144
+    29  0091                     _T2CKPS1	set	145
+    30  0092                     _TMR2ON	set	146
+    31  0092                     _PR2	set	146
+    32  040E                     _INTEDG	set	1038
+    33  0430                     _TRISB0	set	1072
+    34  0439                     _TRISC1	set	1081
+    35  0188                     _ANSEL	set	392
+    36  0189                     _ANSELH	set	393
+    37                           
+    38                           	psect	cinit
+    39  0086                     start_initialization:	
+    40                           
+    41                           ; Clear objects allocated to COMMON
+    42  0086  01F0               	clrf	__pbssCOMMON& (0+127)
+    43  0087  01F1               	clrf	(__pbssCOMMON+1)& (0+127)
+    44  0088                     end_of_initialization:	
+    45                           ;End of C runtime variable initialization code
+    46                           
+    47  0088  0183               	clrf	3
+    48  0089  120A  118A  286F   	ljmp	_main	;jump to C main() function
+    49                           
+    50                           	psect	bssCOMMON
+    51  0070                     __pbssCOMMON:	
+    52  0070                     _i:	
+    53  0070                     	ds	2
+    54                           
+    55                           	psect	cstackCOMMON
+    56  0072                     __pcstackCOMMON:	
+    57  0072                     ?_main:	
+    58  0072                     ?_ngat:	
+    59                           ; 0 bytes @ 0x0
+    60                           
+    61  0072                     ??_ngat:	
+    62                           ; 0 bytes @ 0x0
+    63                           
+    64                           
+    65                           ; 0 bytes @ 0x0
+    66  0072                     	ds	2
+    67  0074                     ??_main:	
+    68                           
+    69                           	psect	maintext
+    70  006F                     __pmaintext:	
+    71                           ; 0 bytes @ 0x2
+    72 ;;Data sizes: Strings 0, constant 0, data 0, bss 2, persistent 0 stack 0
+    73 ;;Auto spaces:   Size  Autos    Used
+    74 ;; COMMON          14      2       4
+    75 ;; BANK0           80      0       0
+    76 ;; BANK1           80      0       0
+    77 ;; BANK3           96      0       0
+    78 ;; BANK2           96      0       0
+    79 ;;
+    80 ;; Pointer list with targets:
+    81 ;;
+    82 ;; Critical Paths under _main in COMMON
+    83 ;;
+    84 ;;   None.
+    85 ;;
+    86 ;; Critical Paths under _ngat in COMMON
+    87 ;;
+    88 ;;   None.
+    89 ;;
+    90 ;; Critical Paths under _main in BANK0
+    91 ;;
+    92 ;;   None.
+    93 ;;
+    94 ;; Critical Paths under _ngat in BANK0
+    95 ;;
+    96 ;;   None.
+    97 ;;
+    98 ;; Critical Paths under _main in BANK1
+    99 ;;
+   100 ;;   None.
+   101 ;;
+   102 ;; Critical Paths under _ngat in BANK1
+   103 ;;
+   104 ;;   None.
+   105 ;;
+   106 ;; Critical Paths under _main in BANK3
+   107 ;;
+   108 ;;   None.
+   109 ;;
+   110 ;; Critical Paths under _ngat in BANK3
+   111 ;;
+   112 ;;   None.
+   113 ;;
+   114 ;; Critical Paths under _main in BANK2
+   115 ;;
+   116 ;;   None.
+   117 ;;
+   118 ;; Critical Paths under _ngat in BANK2
+   119 ;;
+   120 ;;   None.
+   121 ;;
+   122 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   123 ;;
+   124 ;;
+   125 ;;Call Graph Tables:
+   126 ;;
+   127 ;; ---------------------------------------------------------------------------------
+   128 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   129 ;; ---------------------------------------------------------------------------------
+   130 ;; (0) _main                                                 0     0      0       0
+   131 ;; ---------------------------------------------------------------------------------
+   132 ;; Estimated maximum stack depth 0
+   133 ;; ---------------------------------------------------------------------------------
+   134 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   135 ;; ---------------------------------------------------------------------------------
+   136 ;; (1) _ngat                                                 2     2      0       0
+   137 ;;                                              0 COMMON     2     2      0
+   138 ;; ---------------------------------------------------------------------------------
+   139 ;; Estimated maximum stack depth 1
+   140 ;; ---------------------------------------------------------------------------------
+   141 ;; Call Graph Graphs:
+   142 ;; _main (ROOT)
+   143 ;;
+   144 ;; _ngat (ROOT)
+   145 ;;
+   146 ;; Address spaces:
+   147 ;;Name               Size   Autos  Total    Cost      Usage
+   148 ;;BITCOMMON            E      0       0       0        0.0%
+   149 ;;EEDATA             100      0       0       0        0.0%
+   150 ;;NULL                 0      0       0       0        0.0%
+   151 ;;CODE                 0      0       0       0        0.0%
+   152 ;;COMMON               E      2       4       1       28.6%
+   153 ;;BITSFR0              0      0       0       1        0.0%
+   154 ;;SFR0                 0      0       0       1        0.0%
+   155 ;;BITSFR1              0      0       0       2        0.0%
+   156 ;;SFR1                 0      0       0       2        0.0%
+   157 ;;STACK                0      0       0       2        0.0%
+   158 ;;ABS                  0      0       4       3        0.0%
+   159 ;;BITBANK0            50      0       0       4        0.0%
+   160 ;;BITSFR3              0      0       0       4        0.0%
+   161 ;;SFR3                 0      0       0       4        0.0%
+   162 ;;BANK0               50      0       0       5        0.0%
+   163 ;;BITSFR2              0      0       0       5        0.0%
+   164 ;;SFR2                 0      0       0       5        0.0%
+   165 ;;BITBANK1            50      0       0       6        0.0%
+   166 ;;BANK1               50      0       0       7        0.0%
+   167 ;;BITBANK3            60      0       0       8        0.0%
+   168 ;;BANK3               60      0       0       9        0.0%
+   169 ;;BITBANK2            60      0       0      10        0.0%
+   170 ;;BANK2               60      0       0      11        0.0%
+   171 ;;DATA                 0      0       4      12        0.0%
+   172                           
+   173                           
+   174 ;; *************** function _main *****************
+   175 ;; Defined at:
+   176 ;;		line 12 in file "D:\TTVXL\Project TTVXL\BT04week15ttvxl\BT04week15ttvxl.c"
+   177 ;; Parameters:    Size  Location     Type
+   178 ;;		None
+   179 ;; Auto vars:     Size  Location     Type
+   180 ;;		None
+   181 ;; Return value:  Size  Location     Type
+   182 ;;		None               void
+   183 ;; Registers used:
+   184 ;;		wreg, status,2
+   185 ;; Tracked objects:
+   186 ;;		On entry : 17F/0
+   187 ;;		On exit  : 17F/0
+   188 ;;		Unchanged: FFE80/0
+   189 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   190 ;;      Params:         0       0       0       0       0
+   191 ;;      Locals:         0       0       0       0       0
+   192 ;;      Temps:          0       0       0       0       0
+   193 ;;      Totals:         0       0       0       0       0
+   194 ;;Total ram usage:        0 bytes
+   195 ;; Hardware stack levels required when called:    1
+   196 ;; This function calls:
+   197 ;;		Nothing
+   198 ;; This function is called by:
+   199 ;;		Startup code after reset
+   200 ;; This function uses a non-reentrant model
+   201 ;;
+   202  006F                     _main:	
+   203                           
+   204                           ;BT04week15ttvxl.c: 13: ANSEL = ANSELH = 0;
+   205                           
+   206                           ; Regs used in _main: [wreg+status,2]
+   207  006F  1683               	bsf	3,5	;RP0=1, select bank3
+   208  0070  1703               	bsf	3,6	;RP1=1, select bank3
+   209  0071  0189               	clrf	9	;volatile
+   210  0072  0188               	clrf	8	;volatile
+   211                           
+   212                           ;BT04week15ttvxl.c: 14: TRISC1 = 0;
+   213  0073  1303               	bcf	3,6	;RP1=0, select bank1
+   214  0074  1087               	bcf	7,1
+   215                           
+   216                           ;BT04week15ttvxl.c: 15: TRISB0 = 1;
+   217  0075  1406               	bsf	6,0
+   218                           
+   219                           ;BT04week15ttvxl.c: 17: INTE = 1;
+   220  0076  160B               	bsf	11,4
+   221                           
+   222                           ;BT04week15ttvxl.c: 18: INTF = 0;
+   223  0077  108B               	bcf	11,1
+   224                           
+   225                           ;BT04week15ttvxl.c: 19: INTEDG = 0;
+   226  0078  1301               	bcf	1,6
+   227                           
+   228                           ;BT04week15ttvxl.c: 20: GIE = 1;
+   229  0079  178B               	bsf	11,7
+   230                           
+   231                           ;BT04week15ttvxl.c: 23: T2CKPS1 = 0; T2CKPS0 = 1;
+   232  007A  1283               	bcf	3,5	;RP0=0, select bank0
+   233  007B  1092               	bcf	18,1
+   234  007C  1412               	bsf	18,0
+   235                           
+   236                           ;BT04week15ttvxl.c: 24: TMR2 = 0; PR2 = 82;
+   237  007D  0191               	clrf	17	;volatile
+   238  007E  3052               	movlw	82
+   239  007F  1683               	bsf	3,5	;RP0=1, select bank1
+   240  0080  0092               	movwf	18	;volatile
+   241                           
+   242                           ;BT04week15ttvxl.c: 25: TMR2ON = 0;
+   243  0081  1283               	bcf	3,5	;RP0=0, select bank0
+   244  0082  1112               	bcf	18,2
+   245                           
+   246                           ;BT04week15ttvxl.c: 28: CCP2CON = 0b00000000;
+   247  0083  019D               	clrf	29	;volatile
+   248                           
+   249                           ;BT04week15ttvxl.c: 29: CCPR2L = 0;
+   250  0084  019B               	clrf	27	;volatile
+   251  0085                     l1028:	
+   252                           ;BT04week15ttvxl.c: 31: {}
+   253                           
+   254  0085  2885               	goto	l1028
+   255  0086                     __end_of_main:	
+   256                           
+   257                           	psect	text26
+   258  000F                     __ptext26:	
+   259 ;; =============== function _main ends ============
+   260                           
+   261                           
+   262 ;; *************** function _ngat *****************
+   263 ;; Defined at:
+   264 ;;		line 35 in file "D:\TTVXL\Project TTVXL\BT04week15ttvxl\BT04week15ttvxl.c"
+   265 ;; Parameters:    Size  Location     Type
+   266 ;;		None
+   267 ;; Auto vars:     Size  Location     Type
+   268 ;;		None
+   269 ;; Return value:  Size  Location     Type
+   270 ;;		None               void
+   271 ;; Registers used:
+   272 ;;		wreg, status,2, status,0
+   273 ;; Tracked objects:
+   274 ;;		On entry : 0/0
+   275 ;;		On exit  : 0/0
+   276 ;;		Unchanged: FFF9F/0
+   277 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   278 ;;      Params:         0       0       0       0       0
+   279 ;;      Locals:         0       0       0       0       0
+   280 ;;      Temps:          2       0       0       0       0
+   281 ;;      Totals:         2       0       0       0       0
+   282 ;;Total ram usage:        2 bytes
+   283 ;; Hardware stack levels used:    1
+   284 ;; This function calls:
+   285 ;;		Nothing
+   286 ;; This function is called by:
+   287 ;;		Interrupt level 1
+   288 ;; This function uses a non-reentrant model
+   289 ;;
+   290  000F                     _ngat:	
+   291                           
+   292                           ;BT04week15ttvxl.c: 37: {
+   293                           ;BT04week15ttvxl.c: 38: i=i++;
+   294  000F  1C8B               	btfss	11,1
+   295  0010  285E               	goto	L1
+   296  0011  0AF0               	incf	_i,f
+   297  0012  1903               	skipnz
+   298  0013  0AF1               	incf	_i+1,f
+   299                           
+   300                           ;BT04week15ttvxl.c: 39: if (i==1)
+   301  0014  0370               	decf	_i,w
+   302  0015  0471               	iorwf	_i+1,w
+   303                           
+   304                           ;BT04week15ttvxl.c: 40: {
+   305                           ;BT04week15ttvxl.c: 41: TMR2ON = 1;
+   306  0016  1283               	bcf	3,5	;RP0=0, select bank0
+   307  0017  1D03               	skipz
+   308  0018  281C               	goto	i1l1034
+   309                           
+   310                           ;BT04week15ttvxl.c: 42: CCP2CON = 0b00001100;
+   311                           
+   312                           ;BT04week15ttvxl.c: 43: CCPR2L = 13;
+   313  0019  2065  120A  118A   	fcall	PL2	;call to abstracted procedure
+   314  001C                     i1l1034:	
+   315                           
+   316                           ;BT04week15ttvxl.c: 44: }
+   317                           ;BT04week15ttvxl.c: 45: if (i==2)
+   318  001C  0870               	movf	_i,w
+   319  001D  3A02               	xorlw	2
+   320  001E  0471               	iorwf	_i+1,w
+   321  001F  1D03               	skipz
+   322  0020  2827               	goto	i1l1035
+   323  0021  206C               	call	PL3	;select bank 0
+   324                           
+   325                           ;BT04week15ttvxl.c: 46: {
+   326                           ;BT04week15ttvxl.c: 47: TMR2ON = 1;
+   327  0022  300C               	movlw	12
+   328  0023  1512               	bsf	18,2
+   329                           
+   330                           ;BT04week15ttvxl.c: 48: CCP2CON = 0b00001100;
+   331  0024  009D               	movwf	29	;volatile
+   332                           
+   333                           ;BT04week15ttvxl.c: 49: CCPR2L = 25;
+   334  0025  3019               	movlw	25
+   335  0026  009B               	movwf	27	;volatile
+   336  0027                     i1l1035:	
+   337                           
+   338                           ;BT04week15ttvxl.c: 50: }
+   339                           ;BT04week15ttvxl.c: 51: if (i==3)
+   340  0027  0870               	movf	_i,w
+   341  0028  3A03               	xorlw	3
+   342  0029  0471               	iorwf	_i+1,w
+   343  002A  1D03               	skipz
+   344  002B  2832               	goto	i1l1036
+   345  002C  206C               	call	PL3	;select bank 0
+   346                           
+   347                           ;BT04week15ttvxl.c: 52: {
+   348                           ;BT04week15ttvxl.c: 53: TMR2ON = 1;
+   349  002D  300C               	movlw	12
+   350  002E  1512               	bsf	18,2
+   351                           
+   352                           ;BT04week15ttvxl.c: 54: CCP2CON = 0b00001100;
+   353  002F  009D               	movwf	29	;volatile
+   354                           
+   355                           ;BT04week15ttvxl.c: 55: CCPR2L = 37;
+   356  0030  3025               	movlw	37
+   357  0031  009B               	movwf	27	;volatile
+   358  0032                     i1l1036:	
+   359                           
+   360                           ;BT04week15ttvxl.c: 56: }
+   361                           ;BT04week15ttvxl.c: 57: if (i==4)
+   362  0032  0870               	movf	_i,w
+   363  0033  3A04               	xorlw	4
+   364  0034  0471               	iorwf	_i+1,w
+   365  0035  1D03               	skipz
+   366  0036  283D               	goto	i1l1037
+   367  0037  206C               	call	PL3	;select bank 0
+   368                           
+   369                           ;BT04week15ttvxl.c: 58: {
+   370                           ;BT04week15ttvxl.c: 59: TMR2ON = 1;
+   371  0038  300C               	movlw	12
+   372  0039  1512               	bsf	18,2
+   373                           
+   374                           ;BT04week15ttvxl.c: 60: CCP2CON = 0b00001100;
+   375  003A  009D               	movwf	29	;volatile
+   376                           
+   377                           ;BT04week15ttvxl.c: 61: CCPR2L = 50;
+   378  003B  3032               	movlw	50
+   379  003C  009B               	movwf	27	;volatile
+   380  003D                     i1l1037:	
+   381                           
+   382                           ;BT04week15ttvxl.c: 62: }
+   383                           ;BT04week15ttvxl.c: 63: if (i==5)
+   384  003D  0870               	movf	_i,w
+   385  003E  3A05               	xorlw	5
+   386  003F  0471               	iorwf	_i+1,w
+   387  0040  1D03               	skipz
+   388  0041  2848               	goto	i1l1038
+   389  0042  206C               	call	PL3	;select bank 0
+   390                           
+   391                           ;BT04week15ttvxl.c: 64: {
+   392                           ;BT04week15ttvxl.c: 65: TMR2ON = 1;
+   393  0043  300C               	movlw	12
+   394  0044  1512               	bsf	18,2
+   395                           
+   396                           ;BT04week15ttvxl.c: 66: CCP2CON = 0b00001100;
+   397  0045  009D               	movwf	29	;volatile
+   398                           
+   399                           ;BT04week15ttvxl.c: 67: CCPR2L = 63;
+   400  0046  303F               	movlw	63
+   401  0047  009B               	movwf	27	;volatile
+   402  0048                     i1l1038:	
+   403                           
+   404                           ;BT04week15ttvxl.c: 68: }
+   405                           ;BT04week15ttvxl.c: 69: if (i==6)
+   406  0048  0870               	movf	_i,w
+   407  0049  3A06               	xorlw	6
+   408  004A  0471               	iorwf	_i+1,w
+   409  004B  1D03               	skipz
+   410  004C  2853               	goto	i1l1039
+   411  004D  206C               	call	PL3	;select bank 0
+   412                           
+   413                           ;BT04week15ttvxl.c: 70: {
+   414                           ;BT04week15ttvxl.c: 71: TMR2ON = 1;
+   415  004E  300C               	movlw	12
+   416  004F  1512               	bsf	18,2
+   417                           
+   418                           ;BT04week15ttvxl.c: 72: CCP2CON = 0b00001100;
+   419  0050  009D               	movwf	29	;volatile
+   420                           
+   421                           ;BT04week15ttvxl.c: 73: CCPR2L = 75;
+   422  0051  304B               	movlw	75
+   423  0052  009B               	movwf	27	;volatile
+   424  0053                     i1l1039:	
+   425                           
+   426                           ;BT04week15ttvxl.c: 74: }
+   427                           ;BT04week15ttvxl.c: 75: if (i==7)
+   428  0053  0870               	movf	_i,w
+   429  0054  3A07               	xorlw	7
+   430  0055  0471               	iorwf	_i+1,w
+   431  0056  1D03               	skipz
+   432  0057  285D               	goto	i1l2458
+   433                           
+   434                           ;BT04week15ttvxl.c: 76: {
+   435                           ;BT04week15ttvxl.c: 77: i=1;
+   436  0058  01F0               	clrf	_i
+   437  0059  0AF0               	incf	_i,f
+   438  005A  01F1               	clrf	_i+1
+   439                           
+   440                           ;BT04week15ttvxl.c: 78: TMR2ON = 1;
+   441  005B  1283               	bcf	3,5	;RP0=0, select bank0
+   442                           
+   443                           ;BT04week15ttvxl.c: 79: CCP2CON = 0b00001100;
+   444                           
+   445                           ;BT04week15ttvxl.c: 80: CCPR2L = 13;
+   446  005C  2065               	fcall	PL2	;call to abstracted procedure
+   447  005D                     i1l2458:	
+   448                           
+   449                           ;BT04week15ttvxl.c: 81: }
+   450                           ;BT04week15ttvxl.c: 82: }
+   451                           ;BT04week15ttvxl.c: 83: INTF = 0;
+   452  005D  108B               	bcf	11,1
+   453  005E                     L1:	
+   454  005E  0873               	movf	??_ngat+1,w
+   455  005F  008A               	movwf	10
+   456  0060  0E72               	swapf	??_ngat^(0+-128),w
+   457  0061  0083               	movwf	3
+   458  0062  0EFE               	swapf	126,f
+   459  0063  0E7E               	swapf	126,w
+   460  0064  0009               	retfie
+   461  0065                     __end_of_ngat:	
+   462  0065                     PL2:	
+   463  0065  1303               	bcf	3,6	;RP1=0, select bank0
+   464  0066  300C               	movlw	12
+   465  0067  1512               	bsf	18,2
+   466  0068  009D               	movwf	29	;volatile
+   467  0069  300D               	movlw	13
+   468  006A  009B               	movwf	27	;volatile
+   469  006B  0008               	return
+   470  006C                     PL3:	
+   471  006C  1283               	bcf	3,5	;RP0=0, select bank0
+   472  006D  1303               	bcf	3,6	;RP1=0, select bank0
+   473  006E  0008               	return
+   474                           
+   475                           	psect	intentry
+   476  0004                     __pintentry:	
+   477                           ; Regs used in _ngat: [wreg+status,2+status,0]
+   478                           
+   479  0004                     interrupt_function:	
+   480  007E                     saved_w	set	btemp
+   481  0004  00FE               	movwf	btemp
+   482  0005  0E03               	swapf	3,w
+   483  0006  00F2               	movwf	??_ngat
+   484  0007  080A               	movf	10,w
+   485  0008  00F3               	movwf	??_ngat+1
+   486  0009  120A  118A  280F   	ljmp	_ngat
+   487                           
+   488                           	psect	text27
+   489  0000                     __ptext27:	
+   490 ;; =============== function _ngat ends ============
+   491                           
+   492  007E                     btemp	set	126	;btemp
+   493  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Sun Dec 18 15:47:45 2022
+
+                   _i 0070                   _GIE 005F                   _PR2 0092                  l1028 0085  
+                l2400 0000                  l2410 0000                  l2402 0000                  l2412 0000  
+                l2404 0000                  l2414 0000                  l2406 0000                  l2416 0000  
+                l2408 0000                  l2418 0000                  l2394 0000                  l2396 0000  
+                l2398 0000                  _INTE 005C                  _INTF 0059                  _TMR2 0011  
+                _main 006F                  _ngat 000F                  btemp 007E                  start 000C  
+               ?_main 0072                 ?_ngat 0072                 _ANSEL 0188                 pclath 000A  
+               status 0003                 wtemp0 007E          __end_of_main 0086          __end_of_ngat 0065  
+              ??_main 0074                ??_ngat 0072                _CCPR2L 001B                _ANSELH 0189  
+              i1l1041 0000                i1l1034 001C                i1l1035 0027                i1l1036 0032  
+              i1l1037 003D                i1l1038 0048                i1l1039 0053                i1l2420 0000  
+              i1l2440 0000                i1l2432 0000                i1l2424 0000                i1l2452 0000  
+              i1l2444 0000                i1l2436 0000                i1l2428 0000                i1l2454 0000  
+              i1l2456 0000                i1l2448 0000                i1l2458 005D                _INTEDG 040E  
+              _TMR2ON 0092                _TRISB0 0430                _TRISC1 0439                saved_w 007E  
+      __pcstackCOMMON 0072            __pmaintext 006F            __pintentry 0004               _CCP2CON 001D  
+             _T2CKPS0 0090               _T2CKPS1 0091  end_of_initialization 0088   start_initialization 0086  
+         __pbssCOMMON 0070     interrupt_function 0004              __ptext25 0000              __ptext26 000F  
+            __ptext27 0000         __size_of_main 0017         __size_of_ngat 0056              intlevel1 0000  

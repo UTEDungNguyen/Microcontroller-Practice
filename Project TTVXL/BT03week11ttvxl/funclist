@@ -1,0 +1,20 @@
+_lcd_busy: CODE, 1961 0 39
+_lcd_putc: CODE, 1770 0 47
+_putch: CODE, 1651 0 2
+_lcd_put_byte: CODE, 1817 0 144
+___ftpack: CODE, 978 0 62
+_main: CODE, 590 0 89
+___lwdiv: CODE, 1692 0 42
+_lcd_gotoxy: CODE, 2014 0 24
+_isdigit: CODE, 1653 0 14
+_printf: CODE, 1348 0 303
+___lwmod: CODE, 1734 0 36
+_read_adc_AN0: CODE, 777 0 70
+___ftmul: CODE, 1040 0 111
+___awtoft: CODE, 951 0 27
+___wmul: CODE, 1667 0 25
+___fttol: CODE, 679 0 91
+_lcd_init: CODE, 1161 0 187
+_isprint: CODE, 2000 0 14
+___ftdiv: CODE, 847 0 104
+Total: 1431

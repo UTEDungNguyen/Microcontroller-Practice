@@ -1,0 +1,15 @@
+___awdiv: CODE, 708 0 69
+_pwm_10bit1: CODE, 688 0 20
+_main: CODE, 554 0 134
+_atoi: CODE, 17 0 93
+___lwdiv: CODE, 464 0 42
+_send_string: CODE, 859 0 14
+_ngat: CODE, 808 0 30
+_isdigit: CODE, 425 0 14
+_sprintf: CODE, 110 0 315
+___lwmod: CODE, 506 0 36
+_send_char: CODE, 873 0 6
+_rx: CODE, 838 0 21
+_tx: CODE, 879 0 15
+___wmul: CODE, 439 0 25
+Total: 834

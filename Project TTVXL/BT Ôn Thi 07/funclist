@@ -1,0 +1,13 @@
+_main: CODE, 554 0 90
+_atoi: CODE, 17 0 93
+___lwdiv: CODE, 464 0 42
+_send_string: CODE, 726 0 14
+_ngat: CODE, 675 0 30
+_isdigit: CODE, 425 0 14
+_sprintf: CODE, 110 0 315
+___lwmod: CODE, 506 0 36
+_send_char: CODE, 740 0 6
+_rx: CODE, 705 0 21
+_tx: CODE, 764 0 15
+___wmul: CODE, 439 0 25
+Total: 701

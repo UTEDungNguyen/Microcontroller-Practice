@@ -1,0 +1,7 @@
+_main: CODE, 17 0 103
+_send_string: CODE, 231 0 23
+_ngat: CODE, 120 0 59
+_send_char: CODE, 254 0 8
+_rx_init: CODE, 280 0 14
+_tx_init: CODE, 294 0 14
+Total: 221

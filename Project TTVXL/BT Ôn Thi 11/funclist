@@ -1,0 +1,10 @@
+___awdiv: CODE, 274 0 69
+_pwm_10bit: CODE, 254 0 20
+_main: CODE, 149 0 105
+_atoi: CODE, 17 0 93
+_ngat: CODE, 343 0 54
+_isdigit: CODE, 110 0 14
+_rx: CODE, 397 0 21
+_tx: CODE, 438 0 15
+___wmul: CODE, 124 0 25
+Total: 416

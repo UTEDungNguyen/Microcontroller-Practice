@@ -1,0 +1,10 @@
+_main: CODE, 293 0 48
+_atoi: CODE, 145 0 91
+_send_string: CODE, 341 0 14
+_ngat: CODE, 21 0 124
+_isdigit: CODE, 236 0 14
+_send_char: CODE, 355 0 6
+_rx_init: CODE, 376 0 15
+_tx_init: CODE, 391 0 14
+___wmul: CODE, 250 0 25
+Total: 351

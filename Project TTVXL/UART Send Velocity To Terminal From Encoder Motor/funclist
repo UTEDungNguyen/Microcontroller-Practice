@@ -1,0 +1,15 @@
+___ftpack: CODE, 259 0 62
+_main: CODE, 570 0 141
+___lwdiv: CODE, 486 0 42
+_send_string: CODE, 903 0 28
+_ngat: CODE, 809 0 51
+_sprintf: CODE, 331 0 155
+___lwmod: CODE, 528 0 36
+_send_char: CODE, 931 0 6
+___ftmul: CODE, 148 0 111
+_rx_init: CODE, 957 0 15
+___awtoft: CODE, 17 0 27
+_tx_init: CODE, 972 0 15
+___fttol: CODE, 711 0 91
+___ftdiv: CODE, 44 0 104
+Total: 884

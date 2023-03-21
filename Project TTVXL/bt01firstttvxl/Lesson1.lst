@@ -1,0 +1,620 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.83 build 10920 
+                                                                                               Fri Oct 21 22:34:56 2022
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 10920
+     1                           	processor	16F887
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	text83,local,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,delta=2
+    10                           	psect	text84,local,class=CODE,delta=2
+    11                           	psect	text85,local,class=CODE,delta=2
+    12                           	psect	intentry,global,class=CODE,delta=2
+    13                           	psect	text87,local,class=CODE,delta=2
+    14                           	psect	pa_nodes,global,class=CODE,delta=2
+    15                           	dabs	1,0x7E,2
+    16  000A                     	;#
+    17                           
+    18                           	psect	config
+    19  2007  E3C2               	dw	58306	;#
+    20                           
+    21                           	psect	text83
+    22  0000                     __ptext83:	
+    23  0007                     _PORTC	set	7
+    24  005F                     _GIE	set	95
+    25  0035                     _RB5	set	53
+    26  0036                     _RB6	set	54
+    27  0037                     _RB7	set	55
+    28  005B                     _RBIE	set	91
+    29  0058                     _RBIF	set	88
+    30  0096                     _IOCB	set	150
+    31  0086                     _TRISB	set	134
+    32  0087                     _TRISC	set	135
+    33  0188                     _ANSEL	set	392
+    34  0189                     _ANSELH	set	393
+    35                           
+    36                           	psect	cinit
+    37  0096                     start_initialization:	
+    38  0096                     end_of_initialization:	
+    39                           ;End of C runtime variable initialization code
+    40                           
+    41  0096  0183               	clrf	3
+    42  0097  120A  118A  2854   	ljmp	_main	;jump to C main() function
+    43                           
+    44                           	psect	cstackCOMMON
+    45  0070                     __pcstackCOMMON:	
+    46  0070                     ?_Led_200ms:	
+    47  0070                     ??_Led_200ms:	
+    48                           ; 0 bytes @ 0x0
+    49                           
+    50  0070                     ?_Led_1s:	
+    51                           ; 0 bytes @ 0x0
+    52                           
+    53  0070                     ?_main:	
+    54                           ; 0 bytes @ 0x0
+    55                           
+    56  0070                     ?_button:	
+    57                           ; 0 bytes @ 0x0
+    58                           
+    59                           
+    60                           ; 0 bytes @ 0x0
+    61  0070                     	ds	3
+    62  0073                     Led_200ms@m:	
+    63                           
+    64                           ; 1 bytes @ 0x3
+    65  0073                     	ds	1
+    66  0074                     Led_200ms@h:	
+    67                           
+    68                           ; 1 bytes @ 0x4
+    69  0074                     	ds	1
+    70  0075                     ??_button:	
+    71                           
+    72                           ; 0 bytes @ 0x5
+    73  0075                     	ds	2
+    74  0077                     ??_main:	
+    75                           
+    76                           	psect	cstackBANK0
+    77  0020                     __pcstackBANK0:	
+    78                           ; 0 bytes @ 0x7
+    79                           
+    80  0020                     ??_Led_1s:	
+    81                           
+    82                           ; 0 bytes @ 0x0
+    83  0020                     	ds	3
+    84  0023                     Led_1s@m:	
+    85                           
+    86                           ; 1 bytes @ 0x3
+    87  0023                     	ds	1
+    88  0024                     Led_1s@h:	
+    89                           
+    90                           ; 1 bytes @ 0x4
+    91  0024                     	ds	1
+    92                           
+    93                           	psect	maintext
+    94  0054                     __pmaintext:	
+    95 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    96 ;;Auto spaces:   Size  Autos    Used
+    97 ;; COMMON          14      7       7
+    98 ;; BANK0           80      5       5
+    99 ;; BANK1           80      0       0
+   100 ;; BANK3           96      0       0
+   101 ;; BANK2           96      0       0
+   102 ;;
+   103 ;; Pointer list with targets:
+   104 ;;
+   105 ;; Critical Paths under _main in COMMON
+   106 ;;
+   107 ;;   None.
+   108 ;;
+   109 ;; Critical Paths under _button in COMMON
+   110 ;;
+   111 ;;   _button->_Led_200ms
+   112 ;;
+   113 ;; Critical Paths under _main in BANK0
+   114 ;;
+   115 ;;   _main->_Led_1s
+   116 ;;
+   117 ;; Critical Paths under _button in BANK0
+   118 ;;
+   119 ;;   None.
+   120 ;;
+   121 ;; Critical Paths under _main in BANK1
+   122 ;;
+   123 ;;   None.
+   124 ;;
+   125 ;; Critical Paths under _button in BANK1
+   126 ;;
+   127 ;;   None.
+   128 ;;
+   129 ;; Critical Paths under _main in BANK3
+   130 ;;
+   131 ;;   None.
+   132 ;;
+   133 ;; Critical Paths under _button in BANK3
+   134 ;;
+   135 ;;   None.
+   136 ;;
+   137 ;; Critical Paths under _main in BANK2
+   138 ;;
+   139 ;;   None.
+   140 ;;
+   141 ;; Critical Paths under _button in BANK2
+   142 ;;
+   143 ;;   None.
+   144 ;;
+   145 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   146 ;;
+   147 ;;
+   148 ;;Call Graph Tables:
+   149 ;;
+   150 ;; ---------------------------------------------------------------------------------
+   151 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   152 ;; ---------------------------------------------------------------------------------
+   153 ;; (0) _main                                                 0     0      0      93
+   154 ;;                             _Led_1s
+   155 ;; ---------------------------------------------------------------------------------
+   156 ;; (1) _Led_1s                                               6     6      0      93
+   157 ;;                                              0 BANK0      5     5      0
+   158 ;; ---------------------------------------------------------------------------------
+   159 ;; Estimated maximum stack depth 1
+   160 ;; ---------------------------------------------------------------------------------
+   161 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   162 ;; ---------------------------------------------------------------------------------
+   163 ;; (2) _button                                               2     2      0      60
+   164 ;;                                              5 COMMON     2     2      0
+   165 ;;                          _Led_200ms
+   166 ;; ---------------------------------------------------------------------------------
+   167 ;; (3) _Led_200ms                                            6     6      0      60
+   168 ;;                                              0 COMMON     5     5      0
+   169 ;; ---------------------------------------------------------------------------------
+   170 ;; Estimated maximum stack depth 3
+   171 ;; ---------------------------------------------------------------------------------
+   172 ;; Call Graph Graphs:
+   173 ;; _main (ROOT)
+   174 ;;   _Led_1s
+   175 ;;
+   176 ;; _button (ROOT)
+   177 ;;   _Led_200ms
+   178 ;;
+   179 ;; Address spaces:
+   180 ;;Name               Size   Autos  Total    Cost      Usage
+   181 ;;BITCOMMON            E      0       0       0        0.0%
+   182 ;;EEDATA             100      0       0       0        0.0%
+   183 ;;NULL                 0      0       0       0        0.0%
+   184 ;;CODE                 0      0       0       0        0.0%
+   185 ;;COMMON               E      7       7       1       50.0%
+   186 ;;BITSFR0              0      0       0       1        0.0%
+   187 ;;SFR0                 0      0       0       1        0.0%
+   188 ;;BITSFR1              0      0       0       2        0.0%
+   189 ;;SFR1                 0      0       0       2        0.0%
+   190 ;;STACK                0      0       5       2        0.0%
+   191 ;;ABS                  0      0       0       3        0.0%
+   192 ;;BITBANK0            50      0       0       4        0.0%
+   193 ;;BITSFR3              0      0       0       4        0.0%
+   194 ;;SFR3                 0      0       0       4        0.0%
+   195 ;;BANK0               50      5       5       5        6.3%
+   196 ;;BITSFR2              0      0       0       5        0.0%
+   197 ;;SFR2                 0      0       0       5        0.0%
+   198 ;;BITBANK1            50      0       0       6        0.0%
+   199 ;;BANK1               50      0       0       7        0.0%
+   200 ;;BITBANK3            60      0       0       8        0.0%
+   201 ;;BANK3               60      0       0       9        0.0%
+   202 ;;BITBANK2            60      0       0      10        0.0%
+   203 ;;BANK2               60      0       0      11        0.0%
+   204 ;;DATA                 0      0       0      12        0.0%
+   205                           
+   206                           
+   207 ;; *************** function _main *****************
+   208 ;; Defined at:
+   209 ;;		line 38 in file "D:\TTVXL\Project TTVXL\day1.c"
+   210 ;; Parameters:    Size  Location     Type
+   211 ;;		None
+   212 ;; Auto vars:     Size  Location     Type
+   213 ;;		None
+   214 ;; Return value:  Size  Location     Type
+   215 ;;		None               void
+   216 ;; Registers used:
+   217 ;;		wreg, status,2, status,0, pclath, cstack
+   218 ;; Tracked objects:
+   219 ;;		On entry : 17F/0
+   220 ;;		On exit  : 60/0
+   221 ;;		Unchanged: 0/0
+   222 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   223 ;;      Params:         0       0       0       0       0
+   224 ;;      Locals:         0       0       0       0       0
+   225 ;;      Temps:          0       0       0       0       0
+   226 ;;      Totals:         0       0       0       0       0
+   227 ;;Total ram usage:        0 bytes
+   228 ;; Hardware stack levels required when called:    3
+   229 ;; This function calls:
+   230 ;;		_Led_1s
+   231 ;; This function is called by:
+   232 ;;		Startup code after reset
+   233 ;; This function uses a non-reentrant model
+   234 ;;
+   235  0054                     _main:	
+   236                           
+   237                           ;day1.c: 39: TRISC = 0;
+   238                           
+   239                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   240  0054  1683               	bsf	3,5	;RP0=1, select bank1
+   241  0055  0187               	clrf	7	;volatile
+   242                           
+   243                           ;day1.c: 40: ANSEL = ANSELH = 0;
+   244  0056  1703               	bsf	3,6	;RP1=1, select bank3
+   245  0057  0189               	clrf	9	;volatile
+   246  0058  0188               	clrf	8	;volatile
+   247                           
+   248                           ;day1.c: 41: TRISB = 0xFF;
+   249  0059  30FF               	movlw	255
+   250  005A  1303               	bcf	3,6	;RP1=0, select bank1
+   251  005B  0086               	movwf	6	;volatile
+   252                           
+   253                           ;day1.c: 42: PORTC = 0;
+   254  005C  1283               	bcf	3,5	;RP0=0, select bank0
+   255  005D  0187               	clrf	7	;volatile
+   256  005E  30E0               	movlw	224
+   257                           
+   258                           ;day1.c: 44: GIE = 1;
+   259  005F  178B               	bsf	11,7
+   260                           
+   261                           ;day1.c: 45: RBIE = 1;
+   262  0060  158B               	bsf	11,3
+   263  0061  100B               	bcf	11,0
+   264                           
+   265                           ;day1.c: 47: IOCB = 0b11100000;
+   266  0062  1683               	bsf	3,5	;RP0=1, select bank1
+   267  0063  0096               	movwf	22	;volatile
+   268  0064                     l2544:	
+   269                           
+   270                           ;day1.c: 50: if (RB5 == 1){
+   271  0064  1283               	bcf	3,5	;RP0=0, select bank0
+   272  0065  1E86               	btfss	6,5
+   273  0066  2864               	goto	l2544
+   274  0067                     l1045:	
+   275  0067  1E86               	btfss	6,5
+   276  0068  2872               	goto	l1048
+   277  0069  2867               	goto	l1045
+   278  006A                     l2548:	
+   279                           
+   280                           ;day1.c: 54: Led_1s();
+   281  006A  120A  118A  2075   	fcall	_Led_1s
+      +       120A  118A         
+   282                           
+   283                           ;day1.c: 55: if (RB6 == 1 || RB7 ==1){
+   284  006F  1F06               	btfss	6,6
+   285  0070  1B86               	btfsc	6,7
+   286  0071  2864               	goto	l2544
+   287  0072                     l1048:	
+   288  0072  1A86               	btfsc	6,5
+   289  0073  2864               	goto	l2544
+   290  0074  286A               	goto	l2548
+   291  0075                     __end_of_main:	
+   292                           
+   293                           	psect	text84
+   294  0075                     __ptext84:	
+   295 ;; =============== function _main ends ============
+   296                           
+   297                           
+   298 ;; *************** function _Led_1s *****************
+   299 ;; Defined at:
+   300 ;;		line 23 in file "D:\TTVXL\Project TTVXL\day1.c"
+   301 ;; Parameters:    Size  Location     Type
+   302 ;;		None
+   303 ;; Auto vars:     Size  Location     Type
+   304 ;;  m               1    3[BANK0 ] unsigned char 
+   305 ;;  h               1    4[BANK0 ] unsigned char 
+   306 ;;  i               1    0        unsigned char 
+   307 ;; Return value:  Size  Location     Type
+   308 ;;		None               void
+   309 ;; Registers used:
+   310 ;;		wreg, status,2, status,0
+   311 ;; Tracked objects:
+   312 ;;		On entry : 60/0
+   313 ;;		On exit  : 60/0
+   314 ;;		Unchanged: 0/0
+   315 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   316 ;;      Params:         0       0       0       0       0
+   317 ;;      Locals:         0       2       0       0       0
+   318 ;;      Temps:          0       3       0       0       0
+   319 ;;      Totals:         0       5       0       0       0
+   320 ;;Total ram usage:        5 bytes
+   321 ;; Hardware stack levels used:    1
+   322 ;; Hardware stack levels required when called:    2
+   323 ;; This function calls:
+   324 ;;		Nothing
+   325 ;; This function is called by:
+   326 ;;		_main
+   327 ;; This function uses a non-reentrant model
+   328 ;;
+   329  0075                     _Led_1s:	
+   330                           
+   331                           ;day1.c: 25: h = 0b00000100;
+   332                           
+   333                           ; Regs used in _Led_1s: [wreg+status,2+status,0]
+   334  0075  3004               	movlw	4
+   335  0076  00A4               	movwf	Led_1s@h
+   336                           
+   337                           ;day1.c: 26: for (char m=0;m<4;m++){
+   338  0077  01A3               	clrf	Led_1s@m
+   339  0078                     l2520:	
+   340                           
+   341                           ;day1.c: 27: PORTC = h;
+   342  0078  0824               	movf	Led_1s@h,w
+   343  0079  0087               	movwf	7	;volatile
+   344  007A  301A               	movlw	26
+   345                           
+   346                           ;day1.c: 28: h=h>>1;
+   347  007B  1003               	clrc
+   348  007C  0CA4               	rrf	Led_1s@h,f
+   349                           
+   350                           ;day1.c: 29: _delay((unsigned long)((1000)*(20000000/4000.0)));
+   351  007D  00A2               	movwf	??_Led_1s+2
+   352  007E  305E               	movlw	94
+   353  007F  00A1               	movwf	??_Led_1s+1
+   354  0080  3086               	movlw	134
+   355  0081  00A0               	movwf	??_Led_1s
+   356  0082                     u307:	
+   357  0082  0BA0               	decfsz	??_Led_1s,f
+   358  0083  2882               	goto	u307
+   359  0084  0BA1               	decfsz	??_Led_1s+1,f
+   360  0085  2882               	goto	u307
+   361  0086  0BA2               	decfsz	??_Led_1s+2,f
+   362  0087  2882               	goto	u307
+   363  0088  0064               	clrwdt
+   364                           
+   365                           ;day1.c: 30: PORTC=h;
+   366  0089  1283               	bcf	3,5	;RP0=0, select bank0
+   367  008A  1303               	bcf	3,6	;RP1=0, select bank0
+   368  008B  0824               	movf	Led_1s@h,w
+   369  008C  0087               	movwf	7	;volatile
+   370                           
+   371                           ;day1.c: 31: if (RB5 == 1 || RB7 ==1){
+   372  008D  1E86               	btfss	6,5
+   373  008E  1B86               	btfsc	6,7
+   374  008F  0008               	return
+   375  0090  3004               	movlw	4
+   376  0091  0AA3               	incf	Led_1s@m,f
+   377  0092  0223               	subwf	Led_1s@m,w
+   378  0093  1803               	btfsc	3,0
+   379  0094  0008               	return
+   380  0095  2878               	goto	l2520
+   381  0096                     __end_of_Led_1s:	
+   382                           
+   383                           	psect	text85
+   384  000F                     __ptext85:	
+   385 ;; =============== function _Led_1s ends ============
+   386                           
+   387                           
+   388 ;; *************** function _button *****************
+   389 ;; Defined at:
+   390 ;;		line 64 in file "D:\TTVXL\Project TTVXL\day1.c"
+   391 ;; Parameters:    Size  Location     Type
+   392 ;;		None
+   393 ;; Auto vars:     Size  Location     Type
+   394 ;;		None
+   395 ;; Return value:  Size  Location     Type
+   396 ;;		None               void
+   397 ;; Registers used:
+   398 ;;		wreg, status,2, status,0, pclath, cstack
+   399 ;; Tracked objects:
+   400 ;;		On entry : 0/0
+   401 ;;		On exit  : 60/0
+   402 ;;		Unchanged: 0/0
+   403 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   404 ;;      Params:         0       0       0       0       0
+   405 ;;      Locals:         0       0       0       0       0
+   406 ;;      Temps:          2       0       0       0       0
+   407 ;;      Totals:         2       0       0       0       0
+   408 ;;Total ram usage:        2 bytes
+   409 ;; Hardware stack levels used:    1
+   410 ;; Hardware stack levels required when called:    1
+   411 ;; This function calls:
+   412 ;;		_Led_200ms
+   413 ;; This function is called by:
+   414 ;;		Interrupt level 1
+   415 ;; This function uses a non-reentrant model
+   416 ;;
+   417  000F                     _button:	
+   418                           
+   419                           ;day1.c: 65: RBIF = 0;
+   420  000F  100B               	bcf	11,0
+   421                           
+   422                           ;day1.c: 66: if (RB6 == 1){
+   423  0010  1283               	bcf	3,5	;RP0=0, select bank0
+   424  0011  1303               	bcf	3,6	;RP1=0, select bank0
+   425  0012  1F06               	btfss	6,6
+   426  0013  2820               	goto	i1l1059
+   427  0014                     i1l1060:	
+   428  0014  1F06               	btfss	6,6
+   429  0015  2819               	goto	i1l1063
+   430  0016  2814               	goto	i1l1060
+   431  0017                     i1l2460:	
+   432  0017  1B86               	btfsc	6,7
+   433  0018  2820               	goto	i1l1059
+   434  0019                     i1l1063:	
+   435  0019  1B06               	btfsc	6,6
+   436  001A  2820               	goto	i1l1059
+   437                           
+   438                           ;day1.c: 70: Led_200ms();
+   439  001B  2033  120A  118A   	fcall	_Led_200ms
+   440                           
+   441                           ;day1.c: 71: if (RB5 == 1 || RB7 == 1){
+   442  001E  1E86               	btfss	6,5
+   443  001F  2817               	goto	i1l2460
+   444  0020                     i1l1059:	
+   445                           
+   446                           ;day1.c: 73: }
+   447                           ;day1.c: 74: }
+   448                           ;day1.c: 75: }
+   449                           ;day1.c: 76: if (RB7 == 1){
+   450  0020  1F86               	btfss	6,7
+   451  0021  282C               	goto	i1l1079
+   452  0022                     i1l1070:	
+   453  0022  1F86               	btfss	6,7
+   454  0023  2827               	goto	i1l1073
+   455  0024  2822               	goto	i1l1070
+   456  0025                     i1l2468:	
+   457  0025  1B06               	btfsc	6,6
+   458  0026  282C               	goto	i1l1079
+   459  0027                     i1l1073:	
+   460  0027  1B86               	btfsc	6,7
+   461  0028  282C               	goto	i1l1079
+   462                           
+   463                           ;day1.c: 80: PORTC=0;
+   464  0029  0187               	clrf	7	;volatile
+   465                           
+   466                           ;day1.c: 81: if (RB5 == 1 || RB6 == 1){
+   467  002A  1E86               	btfss	6,5
+   468  002B  2825               	goto	i1l2468
+   469  002C                     i1l1079:	
+   470  002C  0876               	movf	??_button+1,w
+   471  002D  008A               	movwf	10
+   472  002E  0E75               	swapf	??_button^(0+-128),w
+   473  002F  0083               	movwf	3
+   474  0030  0EFE               	swapf	126,f
+   475  0031  0E7E               	swapf	126,w
+   476  0032  0009               	retfie
+   477  0033                     __end_of_button:	
+   478  0033                     __ptext86:	
+   479 ;; =============== function _button ends ============
+   480                           
+   481                           
+   482 ;; *************** function _Led_200ms *****************
+   483 ;; Defined at:
+   484 ;;		line 9 in file "D:\TTVXL\Project TTVXL\day1.c"
+   485 ;; Parameters:    Size  Location     Type
+   486 ;;		None
+   487 ;; Auto vars:     Size  Location     Type
+   488 ;;  m               1    3[COMMON] unsigned char 
+   489 ;;  h               1    4[COMMON] unsigned char 
+   490 ;;  i               1    0        unsigned char 
+   491 ;; Return value:  Size  Location     Type
+   492 ;;		None               void
+   493 ;; Registers used:
+   494 ;;		wreg, status,2, status,0
+   495 ;; Tracked objects:
+   496 ;;		On entry : 0/0
+   497 ;;		On exit  : 60/0
+   498 ;;		Unchanged: 0/0
+   499 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   500 ;;      Params:         0       0       0       0       0
+   501 ;;      Locals:         2       0       0       0       0
+   502 ;;      Temps:          3       0       0       0       0
+   503 ;;      Totals:         5       0       0       0       0
+   504 ;;Total ram usage:        5 bytes
+   505 ;; Hardware stack levels used:    1
+   506 ;; This function calls:
+   507 ;;		Nothing
+   508 ;; This function is called by:
+   509 ;;		_button
+   510 ;; This function uses a non-reentrant model
+   511 ;;
+   512  0033                     _Led_200ms:	
+   513                           
+   514                           ;day1.c: 11: h = 0b00000100;
+   515                           
+   516                           ; Regs used in _Led_200ms: [wreg+status,2+status,0]
+   517  0033  3004               	movlw	4
+   518  0034  00F4               	movwf	Led_200ms@h
+   519                           
+   520                           ;day1.c: 12: for (char m=0;m<4;m++){
+   521  0035  01F3               	clrf	Led_200ms@m
+   522  0036                     i1l2440:	
+   523                           
+   524                           ;day1.c: 13: PORTC = h;
+   525  0036  0874               	movf	Led_200ms@h,w
+   526  0037  0087               	movwf	7	;volatile
+   527  0038  3006               	movlw	6
+   528                           
+   529                           ;day1.c: 14: h=h>>1;
+   530  0039  1003               	clrc
+   531  003A  0CF4               	rrf	Led_200ms@h,f
+   532                           
+   533                           ;day1.c: 15: _delay((unsigned long)((200)*(20000000/4000.0)));
+   534  003B  00F2               	movwf	??_Led_200ms+2
+   535  003C  3013               	movlw	19
+   536  003D  00F1               	movwf	??_Led_200ms+1
+   537  003E  30B1               	movlw	177
+   538  003F  00F0               	movwf	??_Led_200ms
+   539  0040                     u31_27:	
+   540  0040  0BF0               	decfsz	??_Led_200ms,f
+   541  0041  2840               	goto	u31_27
+   542  0042  0BF1               	decfsz	??_Led_200ms+1,f
+   543  0043  2840               	goto	u31_27
+   544  0044  0BF2               	decfsz	??_Led_200ms+2,f
+   545  0045  2840               	goto	u31_27
+   546  0046  2847               	nop2
+   547                           
+   548                           ;day1.c: 16: PORTC=h;
+   549  0047  0874               	movf	Led_200ms@h,w
+   550  0048  1283               	bcf	3,5	;RP0=0, select bank0
+   551  0049  1303               	bcf	3,6	;RP1=0, select bank0
+   552  004A  0087               	movwf	7	;volatile
+   553                           
+   554                           ;day1.c: 17: if (RB6 == 1 || RB7 ==1){
+   555  004B  1F06               	btfss	6,6
+   556  004C  1B86               	btfsc	6,7
+   557  004D  0008               	return
+   558  004E  3004               	movlw	4
+   559  004F  0AF3               	incf	Led_200ms@m,f
+   560  0050  0273               	subwf	Led_200ms@m,w
+   561  0051  1803               	btfsc	3,0
+   562  0052  0008               	return
+   563  0053  2836               	goto	i1l2440
+   564  0054                     __end_of_Led_200ms:	
+   565                           
+   566                           	psect	intentry
+   567  0004                     __pintentry:	
+   568                           ; Regs used in _button: [wreg+status,2+status,0+pclath+cstack]
+   569                           
+   570  0004                     interrupt_function:	
+   571  007E                     saved_w	set	btemp
+   572  0004  00FE               	movwf	btemp
+   573  0005  0E03               	swapf	3,w
+   574  0006  00F5               	movwf	??_button
+   575  0007  080A               	movf	10,w
+   576  0008  00F6               	movwf	??_button+1
+   577  0009  120A  118A  280F   	ljmp	_button
+   578                           
+   579                           	psect	text87
+   580  0000                     __ptext87:	
+   581 ;; =============== function _Led_200ms ends ============
+   582                           
+   583  007E                     btemp	set	126	;btemp
+   584  007E                     wtemp0	set	126
+
+
+HI-TECH Software PICC Macro Assembler V9.83 build 10920 
+Symbol Table                                                                                   Fri Oct 21 22:34:56 2022
+
+                 _GIE 005F                   _RB5 0035                   _RB6 0036                   _RB7 0037  
+                 u307 0082                  l1045 0067                  l1048 0072                  l2520 0078  
+                l2512 0000                  l2530 0000                  l2522 0000                  l2514 0000  
+                l2524 0000                  l2516 0000                  l2540 0000                  l2532 0000  
+                l2550 0000                  l2542 0000                  l2534 0000                  l2544 0064  
+                l2536 0000                  l2538 0000                  l2548 006A                  _IOCB 0096  
+                _RBIE 005B                  _RBIF 0058                  _main 0054                  btemp 007E  
+                start 000C                 ?_main 0070                 _ANSEL 0188                 u31_27 0040  
+               _PORTC 0007                 _TRISB 0086                 _TRISC 0087                 pclath 000A  
+               status 0003                 wtemp0 007E          __end_of_main 0075    __size_of_Led_200ms 0021  
+              ??_main 0077                _ANSELH 0189                i1l1060 0014                i1l1070 0022  
+              i1l1063 0019                i1l1073 0027                i1l1059 0020                i1l1079 002C  
+              i1l2440 0036                i1l2432 0000                i1l2450 0000                i1l2442 0000  
+              i1l2434 0000                i1l2444 0000                i1l2436 0000                i1l2460 0017  
+              i1l2452 0000                i1l2466 0000                i1l2458 0000                i1l2468 0025  
+              _Led_1s 0075                _button 000F                saved_w 007E     __end_of_Led_200ms 0054  
+      __pcstackCOMMON 0070               ?_Led_1s 0070            __pmaintext 0054            __pintentry 0004  
+             ?_button 0070               Led_1s@h 0024               Led_1s@m 0023       __size_of_Led_1s 0021  
+     __size_of_button 0024  end_of_initialization 0096             _Led_200ms 0033        __end_of_Led_1s 0096  
+      __end_of_button 0033   start_initialization 0096            ?_Led_200ms 0070              ??_Led_1s 0020  
+            ??_button 0075         __pcstackBANK0 0020     interrupt_function 0004           ??_Led_200ms 0070  
+            __ptext83 0000              __ptext84 0075              __ptext85 000F              __ptext86 0033  
+            __ptext87 0000         __size_of_main 0021            Led_200ms@h 0074            Led_200ms@m 0073  
+            intlevel1 0000  
